@@ -27,6 +27,10 @@ if GetDepend(['BSP_USING_ICM20608']) or GetDepend(['BSP_USING_AHT10']):
 if GetDepend(['BSP_USING_AUDIO']):
     src += Glob('ports/audio/drv_es8388.c')
     src += Glob('ports/audio/drv_sound.c')
+    
+if GetDepend(['BSP_USING_WIFI']):
+	src += Glob('ports/drv_wlan.c')
+    src += Glob('ports/wifi_config.c')
 
 if GetDepend(['BSP_USING_AUDIO_RECORD']):
     src += Glob('ports/audio/drv_mic.c')
