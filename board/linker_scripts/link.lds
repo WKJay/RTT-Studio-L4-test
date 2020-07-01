@@ -99,8 +99,17 @@ SECTIONS
         . = ALIGN(4);
         _estack = .;
     } >RAM1
+    
+    .lwip :
+    {
+    	. = ALIGN(4);
+    	./rt-thread/components/net/lwip-2.0.2/src/core/memp.o(COMMON)
+    } > RAM2
 
     __bss_start = .;
+    
+    
+    
     .bss :
     {
         . = ALIGN(4);
@@ -120,6 +129,7 @@ SECTIONS
     __bss_end = .;
 
     _end = .;
+    end = _end;
 
     /* Stabs debugging sections.  */
     .stab          0 : { *(.stab) }

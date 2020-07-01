@@ -165,7 +165,7 @@ int rt_hw_wlan_init(void)
     {
         return RT_EOK;
     }
-
+#define BSP_USING_WIFI_THREAD_INIT
 #ifdef BSP_USING_WIFI_THREAD_INIT
     rt_thread_t tid = RT_NULL;
 

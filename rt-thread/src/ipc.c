@@ -661,7 +661,10 @@ rt_err_t rt_mutex_take(rt_mutex_t mutex, rt_int32_t time)
 
     /* parameter check */
     RT_ASSERT(mutex != RT_NULL);
-    RT_ASSERT(rt_object_get_type(&mutex->parent.parent) == RT_Object_Class_Mutex);
+    if(rt_object_get_type(&mutex->parent.parent) != RT_Object_Class_Mutex)
+    {
+        RT_ASSERT(rt_object_get_type(&mutex->parent.parent) == RT_Object_Class_Mutex);
+    }
 
     /* get current thread */
     thread = rt_thread_self();

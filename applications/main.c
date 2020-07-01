@@ -23,8 +23,8 @@
 #define DBG_LVL DBG_LOG
 #include <rtdbg.h>
 
-#define WLAN_SSID "418"
-#define WLAN_PASSWORD "13861880611"
+#define WLAN_SSID "MERCURY_AFE6"
+#define WLAN_PASSWORD "86225601"
 #define NET_READY_TIME_OUT (rt_tick_from_millisecond(15 * 1000))
 
 static void print_scan_result(struct rt_wlan_scan_result *scan_result);
@@ -49,7 +49,6 @@ int main(void)
     struct rt_wlan_info info;
     struct rt_wlan_scan_result *scan_result;
 
-    rt_thread_mdelay(1000);
     /* 等待 500 ms 以便 wifi 完成初始化 */
     rt_hw_wlan_wait_init_done(500);
 
@@ -106,19 +105,6 @@ int main(void)
     {
         LOG_E("The AP(%s) is connect failed!", WLAN_SSID);
     }
-
-    rt_thread_mdelay(5000);
-
-    LOG_D("ready to disconect from ap ...");
-    rt_wlan_disconnect();
-
-    /* 自动连接 */
-    LOG_D("start to autoconnect ...");
-    /* 初始化自动连接配置 */
-    wlan_autoconnect_init();
-    /* 使能 wlan 自动连接 */
-    rt_wlan_config_autoreconnect(RT_TRUE);
-
     return 0;
 }
 

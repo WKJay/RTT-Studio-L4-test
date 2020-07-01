@@ -16,7 +16,6 @@
 #define LIBC_FDSET_H__
 
 #include <rtconfig.h>
-
 #if defined(RT_USING_NEWLIB) || defined(_WIN32)
 #include <sys/types.h>
 #if defined(HAVE_SYS_SELECT_H)

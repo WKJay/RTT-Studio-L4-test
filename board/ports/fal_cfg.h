@@ -53,7 +53,11 @@ extern struct fal_flash_dev nor_flash0;
 #endif
 
 #ifdef BSP_USING_QSPI_FLASH
-#define SPI_FLASH_PARTITION            {FAL_PART_MAGIC_WROD, "filesystem", "W25Q128", 9 * 1024 * 1024, 16 * 1024 * 1024, 0},
+#define SPI_FLASH_PARTITION             {FAL_PART_MAGIC_WROD,  "easyflash",    "W25Q128",                                    0,       512 * 1024, 0}, \
+                                        {FAL_PART_MAGIC_WROD,   "download",    "W25Q128",                           512 * 1024,      1024 * 1024, 0}, \
+                                        {FAL_PART_MAGIC_WROD, "wifi_image",    "W25Q128",                  (512 + 1024) * 1024,       512 * 1024, 0}, \
+                                        {FAL_PART_MAGIC_WROD,       "font",    "W25Q128",            (512 + 1024 + 512) * 1024,  7 * 1024 * 1024, 0}, \
+                                        {FAL_PART_MAGIC_WROD, "filesystem",    "W25Q128", (512 + 1024 + 512 + 7 * 1024) * 1024,  7 * 1024 * 1024, 0},
 #else
 #define SPI_FLASH_PARTITION 
 #endif
